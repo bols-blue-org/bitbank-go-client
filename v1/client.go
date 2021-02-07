@@ -218,10 +218,11 @@ func (c *Client) sendRequest(ctx context.Context, method, spath string, body io.
 	}
 
 	res, err := c.HTTPClient.Do(req)
-	c.Logger.Printf("Response: %s \n", httpResponseLog(res))
 	if err != nil {
 		c.Logger.Printf("err: %#v \n", err)
 		return nil, err
+	}else{
+		c.Logger.Printf("Response: %s \n", httpResponseLog(res))
 	}
 
 	if res.StatusCode != 200 {
